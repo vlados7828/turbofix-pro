@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TurboFix Pro — ремонт турбін та металопрокату</title>
+<style>
+  body { font-family: 'Montserrat', sans-serif; margin:0; background:#111; color:#eee; }
+  header { background:#e63946; padding: 30px; text-align:center; }
+  header h1 { margin:0; font-size:2.5em; }
+  header p { margin-top: 5px; font-size:1.2em; }
+  .btn { background:#1d3557; color:#eee; padding:12px 25px; border:none; border-radius:4px; cursor:pointer; font-weight:bold; transition: background 0.3s; }
+  .btn:hover { background:#457b9d; }
+  section { padding: 40px 20px; max-width: 900px; margin: auto; }
+  h2 { border-bottom: 2px solid #e63946; padding-bottom: 8px; margin-bottom: 25px; }
+  
+  /* Услуги */
+  .services { display: flex; flex-wrap: wrap; justify-content: space-between; }
+  .service { background:#222; border-radius:8px; flex-basis: 48%; margin-bottom: 20px; padding: 20px; box-sizing: border-box; }
+  .service h3 { margin-top:0; color:#e63946; }
+  .service p { font-size: 1.1em; }
+
+  /* Слайдер отзывов */
+  .slider { position: relative; overflow: hidden; }
+  .slides { display: flex; transition: transform 0.5s ease; }
+  .slide { min-width: 100%; box-sizing: border-box; padding: 20px; background:#222; border-radius:8px; margin: 10px 0; }
+  .slide p { font-style: italic; font-size: 1.2em; }
+  .slide strong { display:block; margin-top: 15px; font-weight: 700; color:#e63946; }
+  .slider-buttons { text-align: center; margin-top: 15px; }
+  .slider-buttons button { background:#e63946; border:none; padding: 8px 14px; margin: 0 5px; border-radius: 5px; cursor:pointer; color:#fff; font-weight:bold; }
+  .slider-buttons button:hover { background:#a62832; }
+
+  /* Контакты */
+  .contacts { background:#222; padding: 25px; border-radius: 8px; text-align: center; margin-top: 40px; }
+  .contacts h3 { color:#e63946; }
+  .contacts p { font-size: 1.1em; margin: 5px 0; }
+  
+  /* Форма */
+  form { background:#222; padding: 20px; border-radius:8px; max-width: 400px; margin: 30px auto 50px; }
+  input, textarea { width: 100%; padding: 10px; margin-bottom: 15px; border-radius:4px; border: none; font-size: 1em; }
+  button.submit { background:#e63946; border:none; padding: 12px; color:#fff; font-weight:bold; cursor:pointer; border-radius:4px; width: 100%; }
+  button.submit:hover { background:#a62832; }
+
+  /* Адаптив */
+  @media (max-width: 600px) {
+    .services { flex-direction: column; }
+    .service { flex-basis: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>TurboFix Pro</h1>
+  <p>Ремонт турбін та металопрокату з гарантією до 12 місяців за 1 день</p>
+  <button class="btn" onclick="alert('Заявка прийнята! Ми зв’яжемось з вами')">Отримати консультацію</button>
+</header>
+
+<section>
+  <h2>Наші послуги</h2>
+  <div class="services">
+    <div class="service">
+      <h3>Ремонт турбін</h3>
+      <p>Професійний ремонт будь-якої складності, гарантія 12 місяців, терміни від 3 годин.</p>
+    </div>
+    <div class="service">
+      <h3>Відновлені турбіни</h3>
+      <p>Продаж якісних відновлених турбін з перевіркою та гарантією.</p>
+    </div>
+    <div class="service">
+      <h3>Металопрокат по Європі</h3>
+      <p>Лояльна доставка металопрокату з Європи, оптимальні ціни та умови.</p>
+    </div>
+    <div class="service">
+      <h3>Діагностика і установка</h3>
+      <p>Діагностика турбін, консультації та професійна установка.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Відгуки наших клієнтів</h2>
+  <div class="slider">
+    <div class="slides" id="slides">
+      <div class="slide">
+        <p>“Дуже швидко відремонтували турбіну, працюють професійно. Рекомендую!”</p>
+        <strong>Олександр, Київ</strong>
+      </div>
+      <div class="slide">
+        <p>“Зробили діагностику та заміну за 3 години, ціни адекватні, якість супер.”</p>
+        <strong>Марина, Львів</strong>
+      </div>
+      <div class="slide">
+        <p>“Професійний сервіс та гарантія 12 місяців — довіряю тільки TurboFix Pro.”</p>
+        <strong>Іван, Харків</strong>
+      </div>
+    </div>
+  </div>
+  <div class="slider-buttons">
+    <button onclick="prevSlide()">←</button>
+    <button onclick="nextSlide()">→</button>
+  </div>
+</section>
+
+<section class="contacts">
+  <h2>Контакти</h2>
+  <h3>Телефон</h3>
+  <p>+386 6 9682585</p>
+  <h3>Штаб-квартира</h3>
+  <p>Цюрих, Швейцарія</p>
+  <h3>Поставка</h3>
+  <p>Поставка по всьому світу, лояльні умови з Європи (металопрокат)</p>
+</section>
+
+<section>
+  <h2>Залиште заявку</h2>
+  <form onsubmit="submitForm(event)">
+    <input type="text" id="name" placeholder="Ваше ім'я" required />
+    <input type="tel" id="phone" placeholder="Ваш телефон" required />
+    <textarea id="message" placeholder="Ваше повідомлення" rows="4"></textarea>
+    <button type="submit" class="submit">Відправити</button>
+  </form>
+</section>
+
+<script>
+  const slides = document.getElementById('slides');
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    const total = slides.children.length;
+    if (index < 0) currentIndex = total - 1;
+    else if (index >= total) currentIndex = 0;
+    else currentIndex = index;
+    slides.style.transform = `translateX(${-currentIndex * 100}%)`;
+  }
+
+  function nextSlide() {
+    showSlide(currentIndex + 1);
+  }
+
+  function prevSlide() {
+    showSlide(currentIndex - 1);
+  }
+
+  setInterval(nextSlide, 6000);
+
+  function submitForm(event) {
+    event.preventDefault();
+    alert('Дякуємо! Ми зв’яжемось з вами найближчим часом.');
+    // Здесь можно добавить логику отправки формы на сервер или почту
+    document.getElementById('name').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('message').value = '';
+  }
+</script>
+
+</body>
+</html>
